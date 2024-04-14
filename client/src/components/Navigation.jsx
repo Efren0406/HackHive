@@ -29,6 +29,14 @@ function Navigation() {
         <li>
           <button
             className="hover:scale-110"
+            onClick={() => handleNavigate("/dashboard")}
+          >
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <button
+            className="hover:scale-110"
             onClick={() => handleNavigate("/")}
           >
             Logout

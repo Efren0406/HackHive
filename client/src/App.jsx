@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Inventory from "./components/Inventory";
 import Calculate from "./components/Calculate";
 import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/calculate" element={<Calculate />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

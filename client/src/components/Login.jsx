@@ -34,7 +34,7 @@ function Login() {
         if (res.status != 200) {
           setAlert("Invalid Credentials");
         } else {
-          navigate("/home");
+          navigate("/dashboard");
           console.log(data);
         }
       };

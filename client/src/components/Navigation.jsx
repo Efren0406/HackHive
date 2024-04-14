@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../assets/logo.svg";
 
 function Navigation() {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ function Navigation() {
     navigate(goTo);
   };
   return (
-    <nav className="flex gap-10 items-center justify-between px-10 py-5 w-screen border-b">
-      <h1 className="font-bold">Logo</h1>
+    <nav className="flex gap-10 items-center justify-between px-10 w-screen border-b sticky">
+      <img src={Logo} alt="Logo" width="125" />
       <ul className="flex gap-4">
         <li>
           <button

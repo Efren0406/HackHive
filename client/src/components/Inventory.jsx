@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
+import Item from "./Item";
 
 function Inventory() {
   const [inventory, setInventory] = useState([]);
@@ -75,9 +76,9 @@ function Inventory() {
     <div className="w-screen">
       <Navigation />
       <div className="flex flex-wrap justify-center items-center mt-2 gap-4">
-        <h1 className="text-4xl text-center mt-8">Inventory</h1>
-        <form className="w-fit gap-2 flex flex-col border px-4">
-          <h2 className="text-center">Add to my inventory</h2>
+        <h1 className="text-4xl text-center mt-8 font-bold">Inventory</h1>
+        <form className="w-fit gap-2 flex flex-col border p-4">
+          <h2 className="text-center font-bold text-xl">Add to my inventory</h2>
           <div className="flex gap-2">
             <label>Item Name</label>
             <input
@@ -135,16 +136,7 @@ function Inventory() {
       </div>
       <div className="flex flex-wrap gap-2">
         {inventory.map((item) => (
-          <div
-            key={item.id}
-            className="border p-4 rounded-md mx-auto w-fit mt-4"
-          >
-            <h2>{item.name}</h2>
-            <p>Quantity: {item.quantity}</p>
-            <p>Quality: {item.quality}</p>
-            <p>Expiration: {item.expiration} </p>
-            <p>Recived: {item.recived} </p>
-          </div>
+          <Item item={item} />
         ))}
       </div>
     </div>

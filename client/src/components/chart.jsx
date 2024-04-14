@@ -17,7 +17,7 @@ const BarChart = ({ data }) => {
         data: {
           labels: data.labels,
           datasets: [{
-            label: 'Datos',
+            label: 'Kilos not Wasted',
             data: data.values,
             backgroundColor: 'rgb(54,193,2, 0.2)',
             borderColor: 'rgba(54,193,2, 1)',

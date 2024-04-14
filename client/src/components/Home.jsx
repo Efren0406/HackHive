@@ -4,8 +4,8 @@ import BarChart from "./chart";
 
 function Home() {
   const data = {
-    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio"],
-    values: [12, 19, 3, 5, 2, 3],
+    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+    values: [2345687, 1345678, 3000984, 2543789, 2245878, 2148578, 2345678, 2000987, 1234878, 2010987, 2909812, 3909889],
   };
 
   return (

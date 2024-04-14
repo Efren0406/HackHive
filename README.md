@@ -39,4 +39,6 @@
 <h3>Setup</h3>
 <p>
     <li>Create a database with the code on file: ./server/db/script.sql</li>
+    <li> Execute: "cd server" and "cd client" on two different shells</li>
+    <li>On each terminal, execute: "npm install" o "npm i"</li>
 </p>

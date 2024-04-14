@@ -26,7 +26,7 @@ function Navigation() {
       <ul className="flex flex-wrap gap-1 justify-center">
         <li>
           <button
-            className="nav-button"
+            className="font-bold text-green-600 text-lg hover:bg-green-600 hover:text-white px-3 py-1 rounded"
             onClick={() => handleNavigate("/home")}
           >
             Home
@@ -34,7 +34,7 @@ function Navigation() {
         </li>
         <li>
           <button
-            className="nav-button"
+            className="font-bold text-green-600 text-lg hover:bg-green-600 hover:text-white px-3 py-1 rounded"
             onClick={() => handleNavigate("/inventory")}
           >
             Inventory
@@ -42,14 +42,17 @@ function Navigation() {
         </li>
         <li>
           <button
-            className="nav-button"
+            className="font-bold text-green-600 text-lg hover:bg-green-600 hover:text-white px-3 py-1 rounded"
             onClick={() => handleNavigate("/customers")}
           >
             Customers
           </button>
         </li>
         <li>
-          <button className="nav-button" onClick={() => handleNavigate("/")}>
+          <button
+            className="font-bold text-green-600 text-lg hover:bg-green-600 hover:text-white px-3 py-1 rounded"
+            onClick={() => handleNavigate("/")}
+          >
             Logout
           </button>
         </li>

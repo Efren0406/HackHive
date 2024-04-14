@@ -43,8 +43,8 @@ function Register() {
     <div className="h-screen flex flex-col justify-center items-center">
       <form className="border p-6 rounded-md flex flex-col gap-2">
         <h1 className="font-bold text-2xl mb-2 text-center">Create Account</h1>
-        <div className="flex gap-2">
-          <label className="font-bold text-gray-700">Username</label>
+        <div className="flex gap-2 items-center">
+          <label className="font-bold">Username</label>
           <input
             type="text"
             name="username"
@@ -53,8 +53,8 @@ function Register() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex gap-2">
-          <label className="font-bold text-gray-700">Email</label>
+        <div className="flex gap-2 items-center">
+          <label className="font-bold">Email</label>
           <input
             type="email"
             name="email"
@@ -63,8 +63,8 @@ function Register() {
             onChange={handleChange}
           ></input>
         </div>
-        <div className="flex gap-2">
-          <label className="font-bold text-gray-700">Password</label>
+        <div className="flex gap-2 items-center">
+          <label className="font-bold">Password</label>
           <input
             type="password"
             name="password"
@@ -73,12 +73,18 @@ function Register() {
             onChange={handleChange}
           ></input>
         </div>
-        <button
-          className="border bg-orange-400 rounded-md w-fit px-4 py-2 mx-auto"
-          onClick={handleSubmit}
-        >
+        <button className="submit-button mx-auto" onClick={handleSubmit}>
           Register
         </button>
+        <p>
+          Alredy an account?{" "}
+          <button
+            className="text-[#36c102] font-bold"
+            onClick={() => navigate("/")}
+          >
+            Login
+          </button>
+        </p>
         {alert && <p className="text-red-700">{alert}</p>}
       </form>
     </div>

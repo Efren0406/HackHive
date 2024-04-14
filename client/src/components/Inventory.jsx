@@ -77,9 +77,9 @@ function Inventory() {
       <Navigation />
       <div className="flex flex-wrap justify-center items-center mt-2 gap-4">
         <h1 className="text-4xl text-center mt-8 font-bold">Inventory</h1>
-        <form className="w-fit gap-2 flex flex-col border p-4">
+        <form className="ss gap-2 flex flex-col ">
           <h2 className="text-center font-bold text-xl">Add to my inventory</h2>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <label>Item Name</label>
             <input
               type="text"
@@ -88,48 +88,45 @@ function Inventory() {
               onChange={handleChange}
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <label>Quantity</label>
             <input
-              type="text"
+              type="number"
               name="quantity"
               className="text-input"
               onChange={handleChange}
             />
             Kg.
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <label>Quality</label>
             <input
-              type="text"
+              type="number"
               name="quality"
               className="text-input"
               onChange={handleChange}
-            />{" "}
+            />
             /10
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <label>Recived at</label>
             <input
-              type="text"
+              type="date"
               name="recived"
               className="text-input"
               onChange={handleChange}
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <label>Expires</label>
             <input
-              type="text"
+              type="date"
               name="expiration"
               className="text-input"
               onChange={handleChange}
             />
           </div>
-          <button
-            className="border bg-orange-400 rounded-md w-fit px-4 py-2 mx-auto"
-            onClick={addToInventory}
-          >
+          <button className="submit-button mx-auto" onClick={addToInventory}>
             Add
           </button>
         </form>

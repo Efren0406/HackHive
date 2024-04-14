@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 .text-input {
-  @apply bg-white border border-gray-300 rounded-lg p-2;
+  @apply bg-white border border-[#36c102] rounded-lg p-2 w-full;
+}
+
+.nav-button {
+  @apply rounded-md font-bold bg-[#36c102] px-10 border border-blue-400 hover:text-white transition-all ease-in-out duration-300;
+}
+
+.submit-button {
+  @apply border bg-[#237501] font-bold text-white rounded-md w-fit px-4 py-2 hover:bg-[#31a500] transition-all ease-in-out duration-300;
+}
+
+span {
+  @apply text-white font-bold;
 }

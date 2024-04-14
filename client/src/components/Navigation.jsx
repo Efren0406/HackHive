@@ -10,12 +10,12 @@ function Navigation() {
     navigate(goTo);
   };
   return (
-    <nav className="flex gap-10 items-center justify-between px-10 py-5 bg-slate-400 w-screen">
+    <nav className="flex gap-10 items-center justify-between px-10 py-5 w-screen border-b">
       <h1 className="font-bold">Logo</h1>
       <ul className="flex gap-4">
         <li>
           <button
-            className="hover:scale-110"
+            className="nav-button"
             onClick={() => handleNavigate("/home")}
           >
             Home
@@ -23,17 +23,14 @@ function Navigation() {
         </li>
         <li>
           <button
-            className="hover:scale-110"
+            className="nav-button"
             onClick={() => handleNavigate("/inventory")}
           >
             Inventory
           </button>
         </li>
         <li>
-          <button
-            className="hover:scale-110"
-            onClick={() => handleNavigate("/")}
-          >
+          <button className="nav-button" onClick={() => handleNavigate("/")}>
             Logout
           </button>
         </li>

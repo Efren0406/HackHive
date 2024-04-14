@@ -1,5 +1,5 @@
 <h1 align="center">
-    <a href="https://themes.material-ui.com/themes/carolina-react-admin-dashboard-free">Carolina React Admin Dashboard with Material-UI Free</a>
+    <p>Logiwaste | An AI solution for logistic on food wasting</p>
     <br>
     <a href="https://twitter.com/intent/tweet?url=https://themes.material-ui.com/themes/carolina-react-admin-dashboard-free&text=Curious about the features? We&#39;ve set up a live preview for your viewing pleasure.">
         <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" />

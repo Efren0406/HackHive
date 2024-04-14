@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import Navigation from "./Navigation";
 
 function Inventory() {
-  const [inventory, setInventory] = useState([
-    {
-      itemName: "Jitomate",
-      quantity: "10",
-      quality: "2",
-    },
-  ]);
+  const [inventory, setInventory] = useState([]);
 
   const [newItem, setNewItem] = useState({
     itemName: "",
@@ -44,6 +38,7 @@ function Inventory() {
               onChange={handleChange}
             />
           </div>
+          fecha de recibido tiempo promedio de descomposicion
           <div className="flex gap-2">
             <label>Quantity</label>
             <input

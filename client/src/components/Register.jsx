@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
+  const [alert, setAlert] = useState(null);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    username: "",
+  });
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
-    //register endpoint post user
     e.preventDefault();
-    navigate("/home");
+    try {
+      const registerUser = async () => {
+        const res = await fetch("http://localhost:3000/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        });
+        const data = await res.json();
+
+        if (res.status != 200) {
+          setAlert("Email already registered");
+        } else {
+          navigate("/");
+          console.log(data);
+        }
+      };
+      registerUser();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="h-screen flex flex-col justify-center items-center">
@@ -19,6 +50,7 @@ function Register() {
             name="username"
             placeholder="Username"
             className="text-input"
+            onChange={handleChange}
           ></input>
         </div>
         <div className="flex gap-2">
@@ -28,6 +60,7 @@ function Register() {
             name="email"
             placeholder="Email"
             className="text-input"
+            onChange={handleChange}
           ></input>
         </div>
         <div className="flex gap-2">
@@ -37,6 +70,7 @@ function Register() {
             name="password"
             placeholder="Password"
             className="text-input"
+            onChange={handleChange}
           ></input>
         </div>
         <button
@@ -45,6 +79,7 @@ function Register() {
         >
           Register
         </button>
+        {alert && <p className="text-red-700">{alert}</p>}
       </form>
     </div>
   );

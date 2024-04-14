@@ -21,5 +21,7 @@ CREATE TABLE Products (
     inventory_id INT REFERENCES Inventory(inventory_id),
     name VARCHAR(255) NOT NULL,
     quantity INT NOT NULL,
-    quality INT
+    quality INT,
+    recived VARCHAR(255),
+    expiration VARCHAR(255)
 );

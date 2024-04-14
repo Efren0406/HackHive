@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
-const BarChart = ({ data }) => {
+const BarChart = ({ data, type, colors, border }) => {
   const chartRef = useRef(null);
   let chartInstance = null;
 
@@ -13,18 +13,19 @@ const BarChart = ({ data }) => {
 
       const ctx = chartRef.current.getContext('2d');
       chartInstance = new Chart(ctx, {
-        type: 'bar',
+        type: type,
         data: {
           labels: data.labels,
           datasets: [{
             label: 'Kilos not Wasted',
             data: data.values,
-            backgroundColor: 'rgb(54,193,2, 0.2)',
-            borderColor: 'rgba(54,193,2, 1)',
+            backgroundColor: colors,
+            borderColor: border,
             borderWidth: 1
           }]
         },
         options: {
+          responsive: true,
           scales: {
             y: {
               beginAtZero: true
@@ -42,7 +43,7 @@ const BarChart = ({ data }) => {
   }, [data]);
 
   return (
-    <div>
+    <div className=''>
       <canvas ref={chartRef}></canvas>
     </div>
   );

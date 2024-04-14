@@ -29,6 +29,7 @@ function Login() {
           body: JSON.stringify(user),
         });
         const data = await res.json();
+        localStorage.setItem("user", JSON.stringify(data));
 
         if (res.status != 200) {
           setAlert("Invalid Credentials");

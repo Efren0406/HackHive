@@ -1,17 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 
 function Inventory() {
   const [inventory, setInventory] = useState([]);
+  const [user, setUser] = useState("");
 
   const [newItem, setNewItem] = useState({
     itemName: "",
     quantity: 0,
     quality: 0,
+    recived: "",
+    expiration: "",
   });
 
+  useEffect(() => {
+    const localUser = localStorage.getItem("user");
+    const userTo = JSON.parse(localUser);
+    setUser(userTo);
+    try {
+      const getInventory = async () => {
+        const res = await fetch("http://localhost:3000/inventory", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userTo),
+        });
+
+        if (res.status != 200) {
+          // handle error con alert?
+        } else {
+          const data = await res.json();
+          setInventory(data);
+        }
+      };
+      getInventory();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   const handleChange = (e) => {
-    e.preventDefault();
     setNewItem({
       ...newItem,
       [e.target.name]: e.target.value,
@@ -20,7 +49,20 @@ function Inventory() {
 
   const addToInventory = (e) => {
     e.preventDefault();
-    setInventory([...inventory, newItem]);
+    try {
+      const sendItem = async () => {
+        const res = await fetch("http://localhost:3000/inventory", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newItem),
+        });
+      };
+      setInventory([...inventory, newItem]);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="w-screen">
@@ -38,7 +80,6 @@ function Inventory() {
               onChange={handleChange}
             />
           </div>
-          fecha de recibido tiempo promedio de descomposicion
           <div className="flex gap-2">
             <label>Quantity</label>
             <input
@@ -47,12 +88,32 @@ function Inventory() {
               className="text-input"
               onChange={handleChange}
             />
+            Kg.
           </div>
           <div className="flex gap-2">
             <label>Quality</label>
             <input
               type="text"
               name="quality"
+              className="text-input"
+              onChange={handleChange}
+            />{" "}
+            /10
+          </div>
+          <div className="flex gap-2">
+            <label>Recived at</label>
+            <input
+              type="text"
+              name="recived"
+              className="text-input"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex gap-2">
+            <label>Expires</label>
+            <input
+              type="text"
+              name="expiration"
               className="text-input"
               onChange={handleChange}
             />
@@ -68,12 +129,14 @@ function Inventory() {
 
       {inventory.map((item) => (
         <div
-          key={item.itemName}
+          key={item.name}
           className="border p-4 rounded-md mx-auto w-fit mt-4"
         >
-          <h2>{item.itemName}</h2>
+          <h2>{item.name}</h2>
           <p>Quantity: {item.quantity}</p>
           <p>Quality: {item.quality}</p>
+          <p>Expiration: {item.expiration} </p>
+          <p>Recived: {item.recived} </p>
         </div>
       ))}
     </div>

@@ -41,7 +41,11 @@ export const logUser = async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    res.json({ username: user.username, email: user.email });
+    res.json({
+      username: user.username,
+      email: user.email,
+      user_id: user.user_id,
+    });
   } catch (error) {
     console.error("Error al logear el usuario:", error);
     res.status(500).json({ error: "Server internal Error" });

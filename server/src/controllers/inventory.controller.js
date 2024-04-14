@@ -1,15 +1,20 @@
 import { pool } from "../db.js";
 
 export const getItems = async (req, res) => {
-  const result = await pool.query("SELECT * FROM items where user_id = 1");
+  const { username, email, user_id } = req.body;
+  const result = await pool.query("SELECT * FROM Products WHERE user_id = ?", [
+    user_id,
+  ]);
   res.json(result[0]);
 };
 
 export const addItem = async (req, res) => {
-  const { name, quantity, recived, expiration, quality } = req.body;
+  //agregar el user_id en el req del front
+  const { itemName, quantity, quality, recived, expiration, user_id } =
+    req.body;
   const result = await pool.query(
-    "INSERT INTO items (name, quantity, user_id) VALUES (?, ?, 1)",
-    [name, quantity]
+    "INSERT INTO Products (itemName, quantity, quality, recived, expiration, user_id) VALUES (?, ?, ?, ?, ?, ?)",
+    [itemName, quantity, quality, recived, expiration, user_id]
   );
-  res.json(result[0]);
+  res.json(result[0].affectedRows);
 };

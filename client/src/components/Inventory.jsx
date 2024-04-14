@@ -76,9 +76,10 @@ function Inventory() {
     <div className="w-screen">
       <Navigation />
       <div className="flex flex-wrap justify-center items-center mt-2 gap-4">
-        <h1 className="text-4xl text-center mt-8 font-bold">Inventory</h1>
+        <h1 className="text-4xl text-center mt-8 font-bold border-[#36c102] border-b-4">
+          Inventory
+        </h1>
         <form className="ss gap-2 flex flex-col ">
-          <h2 className="text-center font-bold text-xl">Add to my inventory</h2>
           <div className="flex gap-2 items-center">
             <label>Item Name</label>
             <input
@@ -127,11 +128,11 @@ function Inventory() {
             />
           </div>
           <button className="submit-button mx-auto" onClick={addToInventory}>
-            Add
+            Add to inventory
           </button>
         </form>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 pb-4">
         {inventory.map((item) => (
           <Item item={item} />
         ))}

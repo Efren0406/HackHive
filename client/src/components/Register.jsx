@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     //register endpoint post user
@@ -11,7 +11,16 @@ function Login() {
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <form className="border p-6 rounded-md flex flex-col gap-2">
-        <h1 className="font-bold text-2xl mb-2 text-center">Login</h1>
+        <h1 className="font-bold text-2xl mb-2 text-center">Create Account</h1>
+        <div className="flex gap-2">
+          <label className="font-bold text-gray-700">Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            className="text-input"
+          ></input>
+        </div>
         <div className="flex gap-2">
           <label className="font-bold text-gray-700">Email</label>
           <input
@@ -34,15 +43,11 @@ function Login() {
           className="border bg-orange-400 rounded-md w-fit px-4 py-2 mx-auto"
           onClick={handleSubmit}
         >
-          Login
+          Register
         </button>
-        <div>
-          <p>Don´t have an account?</p>
-          <button onClick={() => navigate("/register")}>Register</button>
-        </div>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Register;

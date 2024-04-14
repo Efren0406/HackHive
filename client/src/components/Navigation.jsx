@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 function Navigation() {
   const navigate = useNavigate();
   const handleNavigate = (goTo) => {
+    if (goTo === "/") {
+      localStorage.removeItem("user");
+    }
     navigate(goTo);
   };
   return (

@@ -8,7 +8,7 @@ const Chat = () => {
   const sendMessage = async () => {
     try {
       const apiUrl = 'https://api.openai.com/v1/chat/completions';
-      const apiKey = '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'; // Reemplaza con tu clave de API de OpenAI
+      const apiKey = ''; // Reemplaza con tu clave de API de OpenAI
       const requestBody = {
         model: 'gpt-3.5-turbo', // Modelo de ChatGPT a utilizar
         messages: [{ role: 'user', content: input }],

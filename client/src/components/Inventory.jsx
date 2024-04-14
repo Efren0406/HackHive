@@ -6,16 +6,18 @@ function Inventory() {
   const [user, setUser] = useState("");
 
   const [newItem, setNewItem] = useState({
-    itemName: "",
+    name: "",
     quantity: 0,
     quality: 0,
     recived: "",
     expiration: "",
+    user_id: 1,
   });
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     const userTo = JSON.parse(localUser);
+
     setUser(userTo);
     try {
       const getInventory = async () => {
@@ -49,9 +51,13 @@ function Inventory() {
 
   const addToInventory = (e) => {
     e.preventDefault();
+    setNewItem({
+      ...newItem,
+      user_id: user.user_id,
+    });
     try {
       const sendItem = async () => {
-        const res = await fetch("http://localhost:3000/inventory", {
+        const res = await fetch("http://localhost:3000/newItem", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,6 +65,7 @@ function Inventory() {
           body: JSON.stringify(newItem),
         });
       };
+      sendItem();
       setInventory([...inventory, newItem]);
     } catch (error) {
       console.log(error);
@@ -75,7 +82,7 @@ function Inventory() {
             <label>Item Name</label>
             <input
               type="text"
-              name="itemName"
+              name="name"
               className="text-input"
               onChange={handleChange}
             />
@@ -126,19 +133,20 @@ function Inventory() {
           </button>
         </form>
       </div>
-
-      {inventory.map((item) => (
-        <div
-          key={item.name}
-          className="border p-4 rounded-md mx-auto w-fit mt-4"
-        >
-          <h2>{item.name}</h2>
-          <p>Quantity: {item.quantity}</p>
-          <p>Quality: {item.quality}</p>
-          <p>Expiration: {item.expiration} </p>
-          <p>Recived: {item.recived} </p>
-        </div>
-      ))}
+      <div className="flex flex-wrap gap-2">
+        {inventory.map((item) => (
+          <div
+            key={item.id}
+            className="border p-4 rounded-md mx-auto w-fit mt-4"
+          >
+            <h2>{item.name}</h2>
+            <p>Quantity: {item.quantity}</p>
+            <p>Quality: {item.quality}</p>
+            <p>Expiration: {item.expiration} </p>
+            <p>Recived: {item.recived} </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
